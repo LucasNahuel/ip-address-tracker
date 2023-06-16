@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  font-family: 'Barlow Semi Condensed', sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+.banner-root{
+  background-image: url("./assets/images/pattern-bg-desktop.png");
+  display: flex;
+  width: 100vw;
+  height: 280px;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.banner-title{
+
+  color: white;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+
+form{
+  display: flex;
+  flex-direction: row;
+  max-width: 33em;
+  width: 100%;
+  border-radius: 1em;
+  overflow: hidden;
+  
+}
+
+
+input{
+  border-style: none;
+  outline: none;
+  height: 3.5em;
+  padding: 0 1.5em;
+  width: 100%;
+  font-size: medium;
+  font-weight: 500;
+}
+
+input:hover{
+  cursor: pointer;
+}
+
+button{
+  background-color: black;
+  width: 5em;
+  border-style: none;
+  outline: none;
+}
+
+button:hover{
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.ip-info-root{
+  display: flex;
+  width: 65em;
+  height: 10em;
+  background-color: white;
+  border-radius: 1em;
+  box-shadow: 0px 15px 30px rgba(0,0,0,0.2);
+  position: absolute;
+  bottom: 0;
+  transform: translateY(50%);
+}
