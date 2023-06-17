@@ -4,28 +4,7 @@ function Banner(props){
 
     const arrow = iconArrow;
 
-    const [ipAddress, setIpAddress] = useState(null);
-
-    useEffect(()=>{
-        getAddress()
-    });
-
-
-    async function getAddress(){
-        const results = await fetch( "https://geo.ipify.org/api/v2/country,city,vpn?apiKey="+process.env.REACT_APP_IPIFY_API_KEY
-        ).then((response) => {
-            console.log(response);
-
-            if(response.ok === true){
-                return response.json();
-            }else{
-                console.log(response);
-            }
-        }).then((data) => {
-            console.log(data);
-            setIpAddress(data);
-        })
-    }
+    
 
     function handleSubmit(){
 
@@ -49,28 +28,32 @@ function Banner(props){
             <div className="ip-info-root">
                 <div className="ip-info-item">
                     <p className="ip-info-item-title">IP ADRESS</p>
-                    {ipAddress ? ipAddress.ip : ""}
+                    <p className='ip-info-item-data'>{props.ipAddress ? props.ipAddress.query : ""}</p>
+                    
                 </div>
 
                 <div className='ip-info-divider'/>
 
                 <div className="ip-info-item">
                     <p className="ip-info-item-title">LOCATION</p>
-                    {ipAddress ? ipAddress.location.city+", "+ipAddress.location.region : ""}
+                    <p className='ip-info-item-data'>
+                    {props.ipAddress ? props.ipAddress.city+", "+props.ipAddress.regionName : ""}</p>
                 </div>
 
                 <div className='ip-info-divider'/>
 
                 <div className="ip-info-item">
                     <p className="ip-info-item-title">TIMEZONE</p>
-                    {ipAddress ? "UTC"+ipAddress.location.timezone : ""}
+                    <p className='ip-info-item-data'>{props.ipAddress ? "UTC"+props.ipAddress.timezone : ""}</p>
+                    
                 </div>
 
                 <div className='ip-info-divider'/>
 
                 <div className="ip-info-item">
                     <p className="ip-info-item-title">ISP</p>
-                    <div>{ ipAddress ? ipAddress.isp : ""}</div>
+                    <p className='ip-info-item-data'>{ props.ipAddress ? props.ipAddress.isp : ""}</p>
+                    
                 </div>
             </div>
 
