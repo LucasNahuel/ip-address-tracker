@@ -9,15 +9,22 @@ function App(props){
 
     const mapRef = useRef(null);
 
-    var map = null;
+
+    const [map, setMap] = useState(null);
 
     useEffect(()=>{
-        getAddress()
-    }, [firstLoad]);
+        getAddress("")
+    }, [0]);
 
 
-    async function getAddress(){
-        const results = await fetch( "http://ip-api.com/json/"
+    
+
+
+    async function getAddress(adress){
+
+        console.log("calling"+adress);
+
+        const results = await fetch( "http://ip-api.com/json/"+adress
         ).then((response) => {
             if(response.ok === true){
                 return response.json();
@@ -26,15 +33,34 @@ function App(props){
             }
         }).then((data) => {
 
-            if(map == null){
-                map = L.map(mapRef.current, {
-                    center: [data.lat, data.lon],
-                    zoom: 14
-                });
+            if(map === null){
+
+                try{
+
+                    let newmap = L.map(mapRef.current, {
+                        center: [data.lat, data.lon],
+                        zoom: 14
+                    });
+    
+    
+                        
+                    L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(newmap);
+    
+                    L.marker([data.lat, data.lon]).addTo(newmap);
+    
+                    setMap(newmap);
+                }catch(e){
+                    console.log(e);
+                    
+                }
                 
 
-                L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(map);
+                
+        
+                
 
+            }else{
+                map.flyTo([data.lat, data.lon], 14);
                 L.marker([data.lat, data.lon]).addTo(map);
             }
 
@@ -48,8 +74,8 @@ function App(props){
 
     return(
         <div>
-            <Banner ipAddress={ipAddress}></Banner>
-            <div className="map-root" ref={mapRef}></div>
+            <Banner updateAddress={(val) => getAddress(val)} ipAddress={ipAddress}></Banner>
+            <div id='map' className="map-root" ref={mapRef}></div>
             
         </div>
     )

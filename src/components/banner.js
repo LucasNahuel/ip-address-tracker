@@ -1,13 +1,31 @@
 import iconArrow from './../assets/images/icon-arrow.svg';
 import  {useEffect, useState}  from 'react';
+
+
+
 function Banner(props){
 
     const arrow = iconArrow;
 
+    const [searchInputContent, setSearchInputContent] = useState(null);
+
     
 
-    function handleSubmit(){
+    function handleSubmit(ev){
+        ev.preventDefault();  
+        if(searchInputContent != null){
+            
+            props.updateAddress(searchInputContent);
+        }
+    }
 
+    function handleSearchInputChange(ev){
+        ev.preventDefault();
+        console.log(ev.target.value);
+
+        if(ev.target.value.length > 7 && ev.target.value.length < 16){
+            setSearchInputContent(ev.target.value);
+        }
     }
 
 
@@ -15,9 +33,9 @@ function Banner(props){
         <div className="banner-root">
             <h1 className="banner-title">IP Address Tracker</h1>
 
-            <form onSubmit={() => handleSubmit()}>
+            <form onSubmit={(ev) => handleSubmit(ev)}>
 
-                <input type="text" placeholder="serch for any IP address or domain"/>
+                <input minLength={7} maxLength={15} onChange={(ev)=> handleSearchInputChange(ev)} type="text" placeholder="serch for any IP address or domain"/>
 
                 <button type="submit">
                     <img src={arrow}></img>
