@@ -43,37 +43,41 @@ function Banner(props){
 
             </form>
 
-            <div className="ip-info-root">
-                <div className="ip-info-item">
-                    <p className="ip-info-item-title">IP ADRESS</p>
-                    <p className='ip-info-item-data'>{props.ipAddress ? props.ipAddress.query : ""}</p>
-                    
-                </div>
+            <div className='ip-info-container'>
+                <div className="ip-info-root">
+                    <div className="ip-info-item">
+                        <p className="ip-info-item-title">IP ADRESS</p>
+                        <p className='ip-info-item-data'>{props.ipAddress ? props.ipAddress.query : ""}</p>
+                        
+                    </div>
 
-                <div className='ip-info-divider'/>
+                    <div className='ip-info-divider'/>
 
-                <div className="ip-info-item">
-                    <p className="ip-info-item-title">LOCATION</p>
-                    <p className='ip-info-item-data'>
-                    {props.ipAddress ? props.ipAddress.city+", "+props.ipAddress.regionName : ""}</p>
-                </div>
+                    <div className="ip-info-item">
+                        <p className="ip-info-item-title">LOCATION</p>
+                        <p className='ip-info-item-data'>
+                        {props.ipAddress ? props.ipAddress.city+", "+props.ipAddress.regionName : ""}</p>
+                    </div>
 
-                <div className='ip-info-divider'/>
+                    <div className='ip-info-divider'/>
 
-                <div className="ip-info-item">
-                    <p className="ip-info-item-title">TIMEZONE</p>
-                    <p className='ip-info-item-data'>{props.ipAddress ? "UTC"+props.ipAddress.timezone : ""}</p>
-                    
-                </div>
+                    <div className="ip-info-item">
+                        <p className="ip-info-item-title">TIMEZONE</p>
+                        <p className='ip-info-item-data'>{props.ipAddress ? "UTC"+props.ipAddress.timezone : ""}</p>
+                        
+                    </div>
 
-                <div className='ip-info-divider'/>
+                    <div className='ip-info-divider'/>
 
-                <div className="ip-info-item">
-                    <p className="ip-info-item-title">ISP</p>
-                    <p className='ip-info-item-data'>{ props.ipAddress ? props.ipAddress.isp : ""}</p>
-                    
+                    <div className="ip-info-item">
+                        <p className="ip-info-item-title">ISP</p>
+                        <p className='ip-info-item-data'>{ props.ipAddress ? props.ipAddress.isp : ""}</p>
+                        
+                    </div>
                 </div>
             </div>
+
+           
 
 
         </div>

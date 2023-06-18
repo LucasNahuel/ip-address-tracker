@@ -54,14 +54,11 @@ function App(props){
                     
                 }
                 
-
-                
-        
-                
-
             }else{
                 map.flyTo([data.lat, data.lon], 14);
                 L.marker([data.lat, data.lon]).addTo(map);
+
+                
             }
 
             console.log(data);

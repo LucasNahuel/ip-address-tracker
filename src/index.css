@@ -35,7 +35,7 @@ form{
   width: calc(100% - 2em);
   border-radius: 1em;
   overflow: hidden;
-  
+  min-height: 4em;
 }
 
 
@@ -124,10 +124,19 @@ button:hover{
   width: 4em !important;
 }
 
+.ip-info-container{
+  display: flex;
+  margin-top: 1em;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+}
+
 @media(max-width: 720px){
   .ip-info-root{
     flex-direction: column;
-    transform: translateY(65%)
+    position: relative;
+    transform: translateY(0);
   }
 
   .ip-info-item{
