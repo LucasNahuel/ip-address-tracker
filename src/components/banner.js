@@ -1,5 +1,5 @@
 import iconArrow from './../assets/images/icon-arrow.svg';
-import  {useEffect, useState}  from 'react';
+import  {useEffect, useState, useRef}  from 'react';
 
 
 
@@ -8,6 +8,15 @@ function Banner(props){
     const arrow = iconArrow;
 
     const [searchInputContent, setSearchInputContent] = useState(null);
+
+    const inputRef = useRef(null);
+
+    useEffect(()=>{
+        if(props.errorMessage != null){
+            inputRef.current.setCustomValidity(props.errorMessage);
+            inputRef.current.reportValidity();
+        }
+    }, [props.errorMessage])
 
     
 
@@ -20,8 +29,8 @@ function Banner(props){
     }
 
     function handleSearchInputChange(ev){
+
         ev.preventDefault();
-        console.log(ev.target.value);
 
         if(ev.target.value.length > 7 && ev.target.value.length < 16){
             setSearchInputContent(ev.target.value);
@@ -35,7 +44,8 @@ function Banner(props){
 
             <form onSubmit={(ev) => handleSubmit(ev)}>
 
-                <input minLength={7} maxLength={15} onChange={(ev)=> handleSearchInputChange(ev)} type="text" placeholder="serch for any IP address or domain"/>
+                <input ref={inputRef} minLength={7} maxLength={15} onChange={(ev)=> handleSearchInputChange(ev)}
+                 type="text" placeholder="serch for any IP address or domain" />
 
                 <button type="submit">
                     <img src={arrow}></img>
@@ -63,7 +73,7 @@ function Banner(props){
 
                     <div className="ip-info-item">
                         <p className="ip-info-item-title">TIMEZONE</p>
-                        <p className='ip-info-item-data'>{props.ipAddress ? "UTC"+props.ipAddress.timezone : ""}</p>
+                        <p className='ip-info-item-data'>{props.ipAddress ? "UTC "+props.ipAddress.timezone : ""}</p>
                         
                     </div>
 
