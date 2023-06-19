@@ -36,7 +36,7 @@ function App(props){
 
             
 
-            if(data.status == "fail"){
+            if(data.error){
                 setFetchErrorMsg("Not a valid IP found");
             }else{
                 if(map === null){
