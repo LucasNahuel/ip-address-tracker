@@ -57,7 +57,7 @@ function Banner(props){
                 <div className="ip-info-root">
                     <div className="ip-info-item">
                         <p className="ip-info-item-title">IP ADRESS</p>
-                        <p className='ip-info-item-data'>{props.ipAddress ? props.ipAddress.query : ""}</p>
+                        <p className='ip-info-item-data'>{props.ipAddress ? props.ipAddress.ip : ""}</p>
                         
                     </div>
 
@@ -66,14 +66,14 @@ function Banner(props){
                     <div className="ip-info-item">
                         <p className="ip-info-item-title">LOCATION</p>
                         <p className='ip-info-item-data'>
-                        {props.ipAddress ? props.ipAddress.city+", "+props.ipAddress.regionName : ""}</p>
+                        {props.ipAddress ? props.ipAddress.city+", "+props.ipAddress.region : ""}</p>
                     </div>
 
                     <div className='ip-info-divider'/>
 
                     <div className="ip-info-item">
                         <p className="ip-info-item-title">TIMEZONE</p>
-                        <p className='ip-info-item-data'>{props.ipAddress ? "UTC "+props.ipAddress.timezone : ""}</p>
+                        <p className='ip-info-item-data'>{props.ipAddress ? "UTC "+props.ipAddress.utc_offset : ""}</p>
                         
                     </div>
 
@@ -81,7 +81,7 @@ function Banner(props){
 
                     <div className="ip-info-item">
                         <p className="ip-info-item-title">ISP</p>
-                        <p className='ip-info-item-data'>{ props.ipAddress ? props.ipAddress.isp : ""}</p>
+                        <p className='ip-info-item-data'>{ props.ipAddress ? props.ipAddress.org : ""}</p>
                         
                     </div>
                 </div>

@@ -23,8 +23,9 @@ function App(props){
 
     async function getAddress(adress){
 
+        let address = adress+"/";
 
-        const results = await fetch( "http://ip-api.com/json/"+adress
+        const results = await fetch( 'https://ipapi.co/'+address+'json/'
         ).then((response) => {
             if(response.ok === true){
                 return response.json();
@@ -43,7 +44,7 @@ function App(props){
                     try{
     
                         let newmap = L.map(mapRef.current, {
-                            center: [data.lat, data.lon],
+                            center: [data.latitude, data.longitude],
                             zoom: 14
                         });
         
@@ -51,7 +52,7 @@ function App(props){
                             
                         L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(newmap);
         
-                        L.marker([data.lat, data.lon]).addTo(newmap);
+                        L.marker([data.latitude, data.longitude]).addTo(newmap);
         
                         setMap(newmap);
                     }catch(e){
@@ -60,29 +61,13 @@ function App(props){
                     }
                     
                 }else{
-                    map.flyTo([data.lat, data.lon], 14);
-                    L.marker([data.lat, data.lon]).addTo(map);
+                    map.flyTo([data.latitude, data.longitude], 14);
+                    L.marker([data.latitude, data.longitude]).addTo(map);
     
                     
                 }
 
-                fetch('https://dev.virtualearth.net/REST/v1/timezone/'+data.lat+','+data.lon+'?key='+process.env.REACT_APP_BING_KEY ).then(
-                    (bingResponse)=>{
-                        if(bingResponse.ok === true){
-                            return bingResponse.json();
-                        }else{
-                            console.log(bingResponse);
-                        }
-                    }
-                ).then(
-                    (bingData) =>{
-                        data.timezone = bingData.resourceSets[0].resources[0].timeZone.utcOffset;
-
-
-                        setIpAddress(data);
-                    }
-                )
-                
+                setIpAddress(data);
                 
             }
 
