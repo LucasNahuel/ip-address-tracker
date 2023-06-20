@@ -41,8 +41,8 @@ Here are my results:
 
 ### Links
 
-- Solution URL: [Github source](https://github.com/LucasNahuel/react-rock-paper-scissor)
-- Live Site URL: [rock-paper-scissors on vercel](https://react-rock-paper-scissor-pied.vercel.app/)
+- Solution URL: [Github source](https://github.com/LucasNahuel/ip-address-tracker)
+- Live Site URL: [ip-address-tracker on vercel](https://ip-address-tracker-xi-bice.vercel.app/)
 
 ## My process
 
@@ -52,7 +52,6 @@ Here are my results:
 - CSS custom properties:
   - Flexbox
   - Media Queries
-  - CSS animations
 - [React](https://reactjs.org/) - JS library
 
 ### What I learned
